@@ -66,6 +66,8 @@ load_videos()
 
 videoElement.addEventListener('timeupdate', () => {
     videoElement.removeAttribute("controls") 
+    let ain = parseInt(next_action_at - videoElement.currentTime)
+    document.getElementById("action_in").innerText = "Action in " + ain + " Seconds"
     if (Math.floor(videoElement.currentTime) >= next_action_at) {
         videoElement.pause();
         modal.style.display = 'block';
@@ -87,7 +89,7 @@ function execute_action(feel = 'happy'){
         cnt++
     }
 
-    next_id = next_id != 0 ? next_id : (Math.floor(Math.random() * videos.length))
+    next_id = next_id != 0 ? next_id : (Math.floor(Math.random() * videos.length) + 1)
     load_video(next_id)
 }
 

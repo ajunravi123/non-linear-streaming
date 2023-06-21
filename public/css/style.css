@@ -88,6 +88,13 @@ video {
     font-size: 14px;
 }
 
+#action_in {
+    text-align: center;
+    color: #5e5d5d;
+    font-family: sans-serif;
+    font-size: 12px;
+}
+
 .action_btn {
     background-color: #5b045a; /* Green */
     border: none;
