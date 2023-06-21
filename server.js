@@ -64,41 +64,6 @@ app.get('/video', (req, res) => {
     stream.pipe(res);
 });
 
-app.listen('3000', () => {
-    console.log('Video streaming Server is running on port 3000');
-});
-
-
-
-// Websocker server for the dynamic communication between client and server
-const wss = new WebSocket.Server({ noServer: true });
-wss.on('connection', (ws) => {
-    ws.on('message', (message) => {
-        var data = JSON.parse(message)
-        if(!user_sessions[data["user_name"]]){
-            return
-        }
-
-        user_sessions[data["user_name"]]["last_watched_video_id"] = data["video_id"]
-        user_sessions[data["user_name"]]["start_from"] = data["current_time"]
-        let vid = parseInt(data["video_id"])
-        user_sessions[data["user_name"]]["watched_videos"][vid] = {
-            start_from : data["current_time"]
-        }
-        ws.send('Server received: ' + message);
-    });
-
-    ws.on('close', () => {
-        console.log('WebSocket connection closed');
-    });
-});
-
-const server = app.listen(3001, () => {
-    console.log('Websocket Server is running on port 3001');
-});
-
-server.on('upgrade', (request, socket, head) => {
-    wss.handleUpgrade(request, socket, head, (ws) => {
-        wss.emit('connection', ws, request);
-    });
+app.listen('3001', () => {
+    console.log('Video streaming Server is running on port 3001');
 });
