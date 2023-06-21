@@ -24,7 +24,7 @@ This is a prototype of a non-linear video streaming platform
 1. Clone the repository:
 
    ```shell
-   git clone https://github.com/ajunravi123/Non-linear-VideoStreaming-AdyaCare.git
+   git clone https://github.com/ajunravi123/non-linear-streaming.git
 
    cd Non-linear-VideoStreaming-AdyaCare
 
